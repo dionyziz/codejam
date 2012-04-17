@@ -158,8 +158,8 @@ for ( var t = 1; t <= T; ++t ) {
                     }
                 }
             }
-            // perturbate( simulation );
-            // perturbate( -simulation );
+            perturbate( simulation );
+            perturbate( -simulation );
         }
         // return;
     }
