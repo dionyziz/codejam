@@ -131,7 +131,7 @@ for ( var t = 1; t <= T; ++t ) {
     }
     reflections = [];
     for ( var theta = -Math.PI; theta < Math.PI; theta += 0.001 ) {
-        // console.log( 'Ray tracing from ' + current + ' at an angle ' + theta );
+        // console.log( 'Ray casting from ' + current + ' at an angle ' + theta );
         var simulation = simulate( current, theta, current, D );
         if ( simulation === true ) {
             // console.log( 'Detected reflection at angle ' + theta );
