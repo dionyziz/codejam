@@ -62,7 +62,7 @@ lli W( int i, int j, lli n, lli m ) {
 #ifndef NDEBUG
             printf(
                 "By taking %lld from A of kind %i and %lld from B of kind %i and expanding on W[ %i ][ %i ][ %lld ][ %lld ]:\n",
-                ca, A[ i ], cb - ca, B[ j ], i - 1, j, 0, cb - ca
+                ca, A[ i ], cb - ca, B[ j ], i - 1, j, ( lli )0, cb - ca
             );
 #endif
         }
