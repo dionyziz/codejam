@@ -11,7 +11,7 @@ FILE* in = fopen( "diamond.in", "r" );
 
 vector< list< int > > E;
 vector< int > numParents;
-vector< bool > visited;
+set< int > visited;
 
 int main() {
     int T, N, M, t, i, j, u, v;
@@ -20,12 +20,10 @@ int main() {
     for ( t = 1; t <= T; ++t ) {
         printf( "Case #%i: ", t );
         numParents = vector< int >();
-        visited = vector< bool >();
         E = vector< list< int > >();
         fscanf( in, "%i", &N );
         for ( i = 0; i < N; ++i ) {
             numParents.push_back( 0 );
-            visited.push_back( false );
         }
         for ( u = 0; u < N; ++u ) {
             E.push_back( list< int >() );
@@ -40,6 +38,8 @@ int main() {
         bool diamond = false;
         for ( i = 0; i < N; ++i ) {
             if ( numParents[ i ] == 0 ) {
+                // printf( "New dfs: %i\n", i + 1 );
+                visited = set< int >();
                 stack< int > s;
 
                 s.push( i );
@@ -47,12 +47,13 @@ int main() {
                     v = s.top();
                     s.pop();
                     for ( list< int >::iterator it = E[ v ].begin(); it != E[ v ].end(); ++it ) {
-                        if ( visited[ *it ] ) {
-                            printf( "Yes\n" );
+                        // printf( "Visiting %i\n", *it + 1 );
+                        if ( visited.find( *it ) != visited.end() ) {
+                            printf( "Yes\n" ); //, *it + 1, visited.size() );
                             diamond = true;
                             break;
                         }
-                        visited[ *it ] = true;
+                        visited.insert( *it );
                         s.push( *it );
                     }
                     if ( diamond ) {
