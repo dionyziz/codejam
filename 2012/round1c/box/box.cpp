@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cassert>
 
-#define NDEBUG
+// #define NDEBUG
 
 using namespace std;
 
@@ -47,22 +47,22 @@ lli W( int i, int j, lli n, lli m ) {
         }
         else if ( ca > cb ) {
             // printf( "More of a!\n" );
-            ret = W( i, j - 1, ca - cb, 0 ) + cb;
+            ret = W( i, j - 1, n + cb, 0 ) + cb;
 #ifndef NDEBUG
             printf(
                 "By taking %lld from A of kind %i and %lld from B of kind %i and expanding on W[ %i ][ %i ][ %lld ][ %lld ]:\n",
-                ca - cb, A[ i ], cb, B[ j ], i, j - 1, ca - cb, ( lli )0
+                ca - cb, A[ i ], cb, B[ j ], i, j - 1, n + cb, ( lli )0
             );
 #endif
         }
         else {
             // printf( "More of b!\n" );
             // cb > ca
-            ret = W( i - 1, j, 0, cb - ca ) + ca;
+            ret = W( i - 1, j, 0, m + ca ) + ca;
 #ifndef NDEBUG
             printf(
                 "By taking %lld from A of kind %i and %lld from B of kind %i and expanding on W[ %i ][ %i ][ %lld ][ %lld ]:\n",
-                ca, A[ i ], cb - ca, B[ j ], i - 1, j, ( lli )0, cb - ca
+                ca, A[ i ], cb - ca, B[ j ], i - 1, j, ( lli )0, m + ca
             );
 #endif
         }
