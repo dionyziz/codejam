@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cassert>
 
-// #define NDEBUG
+#define NDEBUG
 
 using namespace std;
 
@@ -106,6 +106,7 @@ int main() {
 
     fscanf( in, "%i", &T );
     for ( t = 1; t <= T; ++t ) {
+        printf( "Case %i\n", t );
         fprintf( out, "Case #%i: ", t );
         memo = map< state, lli >();
         fscanf( in, "%i %i", &N, &M );
